@@ -1,7 +1,7 @@
 from typing import List
 numbers = [1,2,3,4,5]
 
-def square_list(num: List) -> List:
+def square_list(num: List) -> any:
     """
     Arguments:
         List(num): A list of numbers
@@ -18,8 +18,12 @@ def square_list(num: List) -> List:
         except Exception as e:
             print(f"{e}")
             return None
-    
     return num
 
 result = square_list(numbers)
 print(result)
+
+# Tests
+assert square_list([1,2,3]) == [1, 4, 9], "Base condition"
+assert square_list([1,2, "hi"]) == None, "String contains"
+assert square_list([]) == [], "Empty list"

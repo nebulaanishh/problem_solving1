@@ -10,12 +10,6 @@
     # append it to the new list
 # Append list items from minimum length to end in the list with higher length
 
-# Test Cases
-l1 = ["Hi", "Hello"] 
-l2 = ["Here", "There"]
-
-l1 = ["M", "na", 2, "Ke", None]
-l2 = ["y", "me", 2]
 
 # Code
 from typing import List
@@ -36,8 +30,11 @@ def concatenate_lists(list1: List, list2: List) -> List:
 
     min_length = min(len(list1), len(list2))
     for index in range(min_length):
-        concatenated_string = str(list1[index]) + str(list2[index])
-        final_list.append(concatenated_string)
+        if list1[index] is None or list2[index] is None:
+            final_list.append(None)
+        else:
+            concatenated_string = str(list1[index]) + str(list2[index])
+            final_list.append(concatenated_string)
 
     if len(list1) > len(list2):
         final_list += list1[min_length:]
@@ -46,5 +43,11 @@ def concatenate_lists(list1: List, list2: List) -> List:
 
     return final_list
 
-result = concatenate_lists(l1, l2)    
+result = concatenate_lists(["hi", "hello"], ["there", "world"]) 
 print(result)
+
+# Tests
+assert  concatenate_lists(["hi", "hello"], ["there", "world"]) == ['hithere', 'helloworld'], "Equal length of list"
+assert  concatenate_lists(["hi"], ["there", "world"]) == ['hithere', 'world'], "list1 > list2"
+assert  concatenate_lists(["hi", "hello"], ["there"]) == ['hithere', 'hello'], "list2 > list1"
+assert  concatenate_lists(["hi", "hello"], ["there", None]) == ['hithere', None], "Contains None"
