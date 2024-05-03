@@ -33,5 +33,14 @@ def list_cross_product(list1: List, list2: List) -> List:
             result_list.append(concatenated_string)
     return result_list
 
-result = list_cross_product(list1, list2)
+result = list_cross_product([], list2)
 print(result)
+
+
+# Tests
+
+assert list_cross_product(['hi'], ['hello']) == ['hihello'], "Base condition 1"
+assert list_cross_product(['hi', 'hello'], ['hi','hello']) == ['hihi', 'hihello','hellohi', 'hellohello'], "Base condition 2"
+assert list_cross_product([], ['hi']) == [], "one empty list"
+assert list_cross_product(['hi'], ['hi','hello']) == ['hihi', 'hihello'], "list1 < list2"
+assert list_cross_product(['hi', 'hello'], ['hi']) == ['hihi','hellohi'], "list1 > list2"

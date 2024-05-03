@@ -26,3 +26,4 @@ print(result)
 # Tests
 assert square_list([1,2,3]) == [1, 4, 9], "Base condition"
 assert square_list([1,2, "hi"]) == None, "String contains"
+assert square_list([]) == [], "Empty list"
